@@ -32,9 +32,9 @@ namespace BowlingKataTestProject
         public void BowlSpareTest()
         {
             game.Spare(4, 6);
-            game.OpenFrame(5, 3);
+            game.OpenFrame(3, 5);
             ManyOpenFrames(8, 0, 0);
-            int expectedScore = (4 + 6 + 5 + 5 + 3);
+            int expectedScore = (4 + 6 + 3 + 3 + 5);
             Assert.AreEqual(expectedScore, game.Score());
         }
 
