@@ -24,19 +24,12 @@ namespace BowlingKata
 
         /**
         * Overrides the Frame.Score method. Note this only sums the 2 throws in
-        * this current frame and _not_ the running total sum of frames.
+        * this current frame and next throw.
         */
         override public int Score()
         {
-            int throw1 = (int)this.throws[this.startingThrow];
-            int throw2 = (int)this.throws[this.startingThrow + 1];
             int next = (int)this.throws[this.startingThrow + 2];
-            //Note that sum of both throws should equal 10 at this point
-            if (throw1 + throw2 != 10)
-            {
-                Console.WriteLine($"***error: prior + current should equal 10: {throw1 + throw2}");
-            }
-            return throw1 + throw2 + next;
+            return 10 + next;
         }
 
     }

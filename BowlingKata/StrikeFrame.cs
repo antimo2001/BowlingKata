@@ -15,7 +15,7 @@ namespace BowlingKata
 
         /**
         * Overrides the Frame.Score method. Note this only sums the 1 throw in
-        * this current frame and _not_ the running total sum of frames.
+        * this current frame and next 2 throws.
         */
         override public int Score()
         {
