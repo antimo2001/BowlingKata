@@ -76,6 +76,19 @@ namespace BowlingKataTestProject
             Assert.AreEqual(expectedScore, game.Score());
         }
 
+        [TestMethod]
+        public void BowlStrikeTest2()
+        {
+            game.OpenFrame(1, 1);
+            game.Strike();
+            game.OpenFrame(4, 2);
+            ManyOpenFrames(8, 0, 0);
+            int expectedScore = 1 + 1;
+            expectedScore += 10 + 4 + 2;
+            expectedScore += 4 + 2;
+            Assert.AreEqual(expectedScore, game.Score());
+        }
+
         private void ManyOpenFrames(int frameTotalCount, int firstThrow, int secondThrow)
         {
             for (int i = 0; i < frameTotalCount; i++)
