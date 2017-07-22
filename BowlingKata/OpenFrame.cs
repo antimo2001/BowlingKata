@@ -2,24 +2,34 @@
 
 namespace BowlingKata
 {
-    public class OpenFrame: IFrame
+    public class OpenFrame: Frame
     {
-        private int score;
-        private ArrayList throws;
-        private int startingThrow;
-
-        public int Score()
+        /**
+        * Instantiates OpenFrame using the base class constructor
+        */
+        public OpenFrame(ArrayList throws) : base(throws)
         {
-            return score;
         }
 
-        public OpenFrame(ArrayList throws, int firstThrow, int secondThrow)
+        /**
+        * Instantiates OpenFrame using another constructor and the 2 throws
+        */
+        public OpenFrame(ArrayList throws, int firstThrow, int secondThrow) : this(throws)
         {
-            this.throws = throws;
-            this.startingThrow = throws.Count;
-            throws.Add(firstThrow);
-            throws.Add(secondThrow);
-            score = firstThrow + secondThrow;
+            this.throws.Add(firstThrow);
+            this.throws.Add(secondThrow);
         }
+
+        /**
+        * Overrides the Frame.Score method. Note this only sums the 2 throws in
+        * this current frame and _not_ the running total sum of frames.
+        */
+        override public int Score()
+        {
+            int throw1 = (int)this.throws[this.startingThrow];
+            int throw2 = (int)this.throws[this.startingThrow + 1];
+            return throw1 + throw2;
+        }
+
     }
 }

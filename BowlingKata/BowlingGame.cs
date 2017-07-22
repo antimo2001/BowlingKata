@@ -28,10 +28,15 @@ namespace BowlingKata
             frames.Add(new StrikeFrame(throws));
         }
 
+        public void BonusRoll(int pins)
+        {
+            frames.Add(new BonusFrame(throws, pins));
+        }
+
         public int Score()
         {
             int total = 0;
-            foreach (IFrame f in frames)
+            foreach (Frame f in frames)
             {
                 total += f.Score();
             }

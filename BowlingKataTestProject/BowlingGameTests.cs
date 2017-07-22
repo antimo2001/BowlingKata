@@ -66,6 +66,18 @@ namespace BowlingKataTestProject
         }
 
         [TestMethod]
+        public void BowlSpareFinalFrameTest()
+        {
+            ManyOpenFrames(8, 0, 0);
+            game.Spare(2);
+            game.Spare(2);
+            game.BonusRoll(8);
+            int expectedScore = 2 + 8 + 2;
+            expectedScore += 2 + 8 + 8;
+            Assert.AreEqual(expectedScore, game.Score());
+        }
+
+        [TestMethod]
         public void BowlStrikeTest()
         {
             game.Strike();
@@ -82,11 +94,23 @@ namespace BowlingKataTestProject
             game.OpenFrame(1, 1);
             game.Strike();
             game.OpenFrame(4, 2);
-            ManyOpenFrames(8, 0, 0);
+            ManyOpenFrames(7, 0, 0);
             int expectedScore = 1 + 1;
             expectedScore += 10 + 4 + 2;
             expectedScore += 4 + 2;
             Assert.AreEqual(expectedScore, game.Score());
+        }
+
+        [TestMethod]
+        public void BowlPerfectGameTest()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                game.Strike();
+            }
+            game.BonusRoll(10);
+            game.BonusRoll(10);
+            Assert.AreEqual(300, game.Score());
         }
 
         private void ManyOpenFrames(int frameTotalCount, int firstThrow, int secondThrow)

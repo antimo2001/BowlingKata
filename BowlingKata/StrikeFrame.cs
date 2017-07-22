@@ -3,16 +3,23 @@ using System.Collections;
 
 namespace BowlingKata
 {
-    public class StrikeFrame: IFrame
+    public class StrikeFrame: Frame
     {
-        ArrayList throws;
-        int startingThrow;
-
-        public StrikeFrame(ArrayList throws)
+        /**
+        * Instantiates StrikeFrame using the base class constructor
+        */
+        public StrikeFrame(ArrayList throws) : base(throws)
         {
-            this.throws = throws;
-            this.startingThrow = throws.Count;
-            throws.Add(10);
+            this.throws.Add(10);
+        }
+
+        /**
+        * Overrides the Frame.Score method. Note this only sums the 1 throw in
+        * this current frame and _not_ the running total sum of frames.
+        */
+        override public int Score()
+        {
+            return 10 + FirstFollowingBall() + SecondFollowingBall();
         }
 
         private int FirstFollowingBall()
@@ -23,11 +30,6 @@ namespace BowlingKata
         private int SecondFollowingBall()
         {
             return (int)throws[startingThrow + 2];
-        }
-
-        public int Score()
-        {
-            return 10 + FirstFollowingBall() + SecondFollowingBall();
         }
     }
 }

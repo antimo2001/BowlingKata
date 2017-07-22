@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BonusFrame.cs" />
     <Compile Include="BowlingGame.cs" />
+    <Compile Include="Frame.cs" />
     <Compile Include="IFrame.cs" />
     <Compile Include="OpenFrame.cs" />
     <Compile Include="Program.cs" />
