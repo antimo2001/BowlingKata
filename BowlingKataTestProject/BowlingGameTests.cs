@@ -31,7 +31,7 @@ namespace BowlingKataTestProject
         [TestMethod]
         public void BowlSpareTest()
         {
-            game.Spare(4, 6);
+            game.Spare(4);
             game.OpenFrame(3, 5);
             ManyOpenFrames(8, 0, 0);
             int expectedScore = (4 + 6 + 3 + 3 + 5);
@@ -42,7 +42,7 @@ namespace BowlingKataTestProject
         public void BowlSpareTest2()
         {
             ManyOpenFrames(7, 0, 0);
-            game.Spare(4, 6);
+            game.Spare(4);
             game.OpenFrame(5, 3);
             game.OpenFrame(2, 1);
             int expectedScore = (4 + 6 + 5 + 5 + 3 + 2 + 1);
@@ -53,15 +53,26 @@ namespace BowlingKataTestProject
         public void BowlSpareTest3()
         {
             ManyOpenFrames(2, 0, 0);
-            game.Spare(2, 8);
-            game.Spare(4, 6);
-            game.Spare(8, 2);
+            game.Spare(2);
+            game.Spare(4);
+            game.Spare(8);
             game.OpenFrame(5, 3);
             ManyOpenFrames(4, 0, 0);
             int expectedScore = 2 + 8 + 4;
             expectedScore += 4 + 6 + 8;
             expectedScore += 8 + 2 + 5;
             expectedScore += 5 + 3;
+            Assert.AreEqual(expectedScore, game.Score());
+        }
+
+        [TestMethod]
+        public void BowlStrikeTest()
+        {
+            game.Strike();
+            game.OpenFrame(4, 2);
+            ManyOpenFrames(8, 0, 0);
+            int expectedScore = 10 + 4 + 2;
+            expectedScore += 4 + 2;
             Assert.AreEqual(expectedScore, game.Score());
         }
 

@@ -10,19 +10,20 @@ namespace BowlingKata
 
         public int Score()
         {
-            int prior = (int)throws[this.startingThrow];
-            int current = (int)throws[this.startingThrow+1];
+            int throw1 = (int)throws[this.startingThrow];
+            int throw2 = (int)throws[this.startingThrow+1];
             int next = (int)throws[this.startingThrow+2];
-            //Note that the prior + current should equal 10 at this point
-            if (prior + current != 10)
+            //Note that sum of both throws should equal 10 at this point
+            if (throw1 + throw2 != 10)
             {
-                Console.WriteLine($"***error: prior + current should equal 10: {prior + current}");
+                Console.WriteLine($"***error: prior + current should equal 10: {throw1 + throw2}");
             }
-            return prior + current + next;
+            return throw1 + throw2 + next;
         }
 
-        public SpareFrame(ArrayList throws, int firstThrow, int secondThrow)
+        public SpareFrame(ArrayList throws, int firstThrow)
         {
+            int secondThrow = 10 - firstThrow;
             this.throws = throws;
             this.startingThrow = throws.Count;
             throws.Add(firstThrow);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace BowlingKata
 {
@@ -23,9 +18,14 @@ namespace BowlingKata
             frames.Add(new OpenFrame(throws, firstThrow, secondThrow));
         }
 
-        public void Spare(int firstThrow, int secondThrow)
+        public void Spare(int firstThrow)
         {
-            frames.Add(new SpareFrame(throws, firstThrow, secondThrow));
+            frames.Add(new SpareFrame(throws, firstThrow));
+        }
+
+        public void Strike()
+        {
+            frames.Add(new StrikeFrame(throws));
         }
 
         public int Score()
