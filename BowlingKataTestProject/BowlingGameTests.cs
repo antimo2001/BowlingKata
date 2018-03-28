@@ -135,6 +135,18 @@ namespace BowlingKataTestProject
             Assert.AreEqual(200, game.Score());
         }
 
+        [TestMethod]
+        public void BowlMixedFrames1Test()
+        {
+            game.OpenFrame(1, 1);
+            game.Spare(2);
+            game.Strike();
+            game.OpenFrame(4, 4);
+            int expected = 1 + 1 + (10 + 10) + (10 + 4 + 4) + (4 + 4);
+
+            Assert.AreEqual(expected, game.Score());
+        }
+
         private void ManyOpenFrames(int frameTotalCount, int firstThrow, int secondThrow)
         {
             for (int i = 0; i < frameTotalCount; i++)
